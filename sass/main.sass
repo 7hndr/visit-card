@@ -5,10 +5,8 @@
     font-family: 'Zilla Slab', serif
     color: #dfdfdf
 body
-    // overflow: hidden
     width: 100vw
     height: 100vh
-    // background: conic-gradient(from 0deg at 50% 50%, #252525 180deg, #255149 360deg), #1E1E1E
     background: conic-gradient(from 0deg at center, #252525 , #255149)
 main
     display: grid
@@ -53,91 +51,79 @@ main
             li
                 padding: .7em
 
+$BraceCurve: cubic-bezier(.44,1.41,.34,.27)
+@mixin AnimConf()
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    
 
 .Brace_thin_L
     width: 35px
     animation-name: BraceLeft
-    animation-duration: 6s
-    animation-iteration-count: infinite
-    animation-timing-function: cubic-bezier(0.25,0.1,0.25,1)
+    @include AnimConf
+    animation-timing-function: $BraceCurve
 .Brace_bold_L
     width: 25px
     animation-name: BraceInLeft
-    animation-duration: 6s
-    animation-iteration-count: infinite
-    animation-timing-function: cubic-bezier(-0.2, 0.6, 0.2, 0)
+    @include AnimConf
+    animation-timing-function: $BraceCurve
 .Bolt
-    width: 66px
+    width: 62px
     animation-name: BoltScale
-    animation-duration: 6s
-    animation-iteration-count: infinite
-    animation-timing-function: cubic-bezier(0.1, 0.8, 0.1, 0)
+    @include AnimConf
+    animation-timing-function: cubic-bezier(.44,1.41,.76,-0.62)
 .Brace_bold_R
     width: 25px
     animation-name: BraceInRight
-    animation-duration: 6s
-    animation-iteration-count: infinite
-    animation-timing-function: cubic-bezier(-0.2, 0.6, 0.2, 0)
+    @include AnimConf
+    animation-timing-function: $BraceCurve
 .Brace_thin_R
     width: 35px
     animation-name: BraceRight
-    animation-duration: 6s
-    animation-iteration-count: infinite
-    animation-timing-function: cubic-bezier(0.25,0.1,0.25,1)
+    @include AnimConf
+    animation-timing-function: $BraceCurve
+
+
+@mixin BraceShift($trX: 0, $trZ: 0, $rotY: 0, $sC: 1)
+    transform: translateX($trX) translateZ($trZ) rotateY($rotY) scale($sC)
+    transform-origin: center right
+    
 
 @keyframes BraceLeft
     0%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
+        @include BraceShift
     40%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
-    50%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
-    70%
-        transform: translateX(-14px) translateZ(-14px) rotateY(30deg) scale(1.05)
-        transform-origin: center right
-    100%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
+        @include BraceShift
+    55%
+        @include BraceShift(-14px, -14px, -40deg, 0.95)
+    75%
+        @include BraceShift
 
 @keyframes BraceRight
     0%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
+        @include BraceShift
     40%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
-    50%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
-    70%
-        transform: translateX(14px) translateZ(14px) rotateY(-30deg) scale(1.05)
-        transform-origin: center right
-    100%
-        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
-        transform-origin: center right
+        @include BraceShift
+    55%
+        @include BraceShift(14px, 14px, 40deg, 0.95)
+    75%
+        @include BraceShift
 
 @keyframes BraceInLeft
     0%
-        transform: translateX(0px)
+        @include BraceShift
     30%
-        transform: translateX(-7px)
+        @include BraceShift(-7px, -7px, -40deg, 0.95)
     40%
-        transform: translateX(0px)
-    100%
-        transform: translateX(0px)
+        @include BraceShift
 
 @keyframes BraceInRight
     0%
-        transform: translateX(0px)
+        @include BraceShift
     30%
-        transform: translateX(7px)
+        @include BraceShift(7px, 7px, 40deg, 0.95)
     40%
-        transform: translateX(0px)
-    100%
-        transform: translateX(0px)
+        @include BraceShift
 
 @keyframes BoltScale
     0%
@@ -145,6 +131,4 @@ main
     10%
         transform: scale(1.1)
     20%
-        transform: scale(1)
-    100%
         transform: scale(1)
