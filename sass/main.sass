@@ -1,0 +1,150 @@
+*
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+    font-family: 'Zilla Slab', serif
+    color: #dfdfdf
+body
+    // overflow: hidden
+    width: 100vw
+    height: 100vh
+    // background: conic-gradient(from 0deg at 50% 50%, #252525 180deg, #255149 360deg), #1E1E1E
+    background: conic-gradient(from 0deg at center, #252525 , #255149)
+main
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: 1fr
+    align-items: center
+    justify-content: center
+    padding-top: 5rem
+
+.logo
+    display: flex
+    justify-content: center
+    flex-direction: column
+    &-img
+        display: flex
+        justify-content: center
+        align-content: center
+    h1
+        text-align: center
+        text-transform: uppercase
+        letter-spacing: 0.4em
+        font-weight: 600
+        font-size: 40px
+.desc
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    p
+        font-size: 22px
+        line-height: 130%
+        text-align: center
+        letter-spacing: 0.15em
+        width: 16em
+        padding: 2em
+    .soc
+        ul
+            list-style: none
+            display: flex
+            justify-content: center
+            align-items: center
+            li
+                padding: .7em
+
+
+.Brace_thin_L
+    width: 35px
+    animation-name: BraceLeft
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(0.25,0.1,0.25,1)
+.Brace_bold_L
+    width: 25px
+    animation-name: BraceInLeft
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(-0.2, 0.6, 0.2, 0)
+.Bolt
+    width: 66px
+    animation-name: BoltScale
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(0.1, 0.8, 0.1, 0)
+.Brace_bold_R
+    width: 25px
+    animation-name: BraceInRight
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(-0.2, 0.6, 0.2, 0)
+.Brace_thin_R
+    width: 35px
+    animation-name: BraceRight
+    animation-duration: 6s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(0.25,0.1,0.25,1)
+
+@keyframes BraceLeft
+    0%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    40%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    50%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    70%
+        transform: translateX(-14px) translateZ(-14px) rotateY(30deg) scale(1.05)
+        transform-origin: center right
+    100%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+
+@keyframes BraceRight
+    0%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    40%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    50%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+    70%
+        transform: translateX(14px) translateZ(14px) rotateY(-30deg) scale(1.05)
+        transform-origin: center right
+    100%
+        transform: translateX(0) translateZ(0) rotateY(0) scale(1)
+        transform-origin: center right
+
+@keyframes BraceInLeft
+    0%
+        transform: translateX(0px)
+    30%
+        transform: translateX(-7px)
+    40%
+        transform: translateX(0px)
+    100%
+        transform: translateX(0px)
+
+@keyframes BraceInRight
+    0%
+        transform: translateX(0px)
+    30%
+        transform: translateX(7px)
+    40%
+        transform: translateX(0px)
+    100%
+        transform: translateX(0px)
+
+@keyframes BoltScale
+    0%
+        transform: scale(1)
+    10%
+        transform: scale(1.1)
+    20%
+        transform: scale(1)
+    100%
+        transform: scale(1)
